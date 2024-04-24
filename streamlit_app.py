@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 
 # Load the trained model
-model = joblib.load('birds_classificatio.pkl')
+model = joblib.load('birds_classification.pkl')
 
 # Function to make predictions
 def predict_ecological_group(features):
