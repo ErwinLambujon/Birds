@@ -28,7 +28,6 @@ def predict_ecological_group(input_data):
         return None
 
 # Example usage:
-features = {}
 input_features = features
 predicted_group = predict_ecological_group(input_features)
 
@@ -36,7 +35,6 @@ if predicted_group is not None:
     print(f"Predicted ecological group: {predicted_group}")
 else:
     print("Prediction failed.")
-
 
 
 # Streamlit app
