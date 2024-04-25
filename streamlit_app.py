@@ -29,6 +29,7 @@ def predict_ecological_group(input_data):
         return None
 
 # Streamlit app
+# Streamlit app
 def main():
     st.title('Bird Ecological Group Predictor')
     
@@ -62,21 +63,19 @@ def main():
         'tarw': tarw
     })
     
-    # Predict button
-    # Predict button
-if st.button('Predict'):
-    try:
-        prediction = predict_ecological_group(features)
-        
-        # Output section
-        st.header('Prediction Result')
-        if prediction is not None:
-            st.write(f'The predicted ecological group is: {prediction}')
-        else:
-            st.write("Prediction failed.")
-    except Exception as e:
-        st.error(f"An error occurred during prediction: {e}")
-
+    # Predict button (placed inside the main function)
+    if st.button('Predict'):
+        try:
+            prediction = predict_ecological_group(features)
+            
+            # Output section
+            st.header('Prediction Result')
+            if prediction is not None:
+                st.write(f'The predicted ecological group is: {prediction}')
+            else:
+                st.write("Prediction failed.")
+        except Exception as e:
+            st.error(f"An error occurred during prediction: {e}")
 
 if __name__ == '__main__':
     main()
