@@ -63,7 +63,9 @@ def main():
     })
     
     # Predict button
-    if st.button('Predict'):
+    # Predict button
+if st.button('Predict'):
+    try:
         prediction = predict_ecological_group(features)
         
         # Output section
@@ -72,6 +74,9 @@ def main():
             st.write(f'The predicted ecological group is: {prediction}')
         else:
             st.write("Prediction failed.")
+    except Exception as e:
+        st.error(f"An error occurred during prediction: {e}")
+
 
 if __name__ == '__main__':
     main()
