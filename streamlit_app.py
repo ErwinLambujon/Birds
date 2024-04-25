@@ -3,7 +3,23 @@ import pandas as pd
 import joblib
 
 # Load the trained model
-model = joblib.load('birds_classification.pkl')
+import os
+import joblib
+
+# Define the path to the model file
+model_path = 'birds_classification.pkl'
+
+# Check if the file exists
+if os.path.exists(model_path):
+    # Load the model
+    try:
+        model = joblib.load('birds_classification.pkl')
+        print("Model loaded successfully.")
+    except Exception as e:
+        print(f"Error loading the model: {e}")
+else:
+    print(f"Model file '{model_path}' does not exist.")
+
 
 # Function to make predictions
 def predict_ecological_group(features):
