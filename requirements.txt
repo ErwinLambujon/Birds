@@ -8,3 +8,6 @@ streamlit-camera-input-live
 opencv-python
 pyautogui
 joblib
+pandas
+seaborn
+scikit-learn
