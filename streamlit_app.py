@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import joblib
+from sklearn.externals import joblib
 
 # Load the trained model
 model = joblib.load('birds_classification.pkl')
