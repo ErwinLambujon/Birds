@@ -2,9 +2,10 @@ import os
 import joblib
 import streamlit as st
 import numpy as np
+from tensorflow.keras.models import load_model
 
 # Load the model
-model_path = 'birds_classification.pkl'
+model = load_model("birds_classification.h5")
 
 # Check if the file exists
 if os.path.exists(model_path):
