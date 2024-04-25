@@ -358,8 +358,4 @@ with open(file_path, 'rb') as file:
 
 print(model)
 
-!pip install streamlit
-
 """The model perfomed well in identifying the Terrestrial Birds and the Raptors"""
-
-!streamlit run streamlit_app.py
