@@ -18,6 +18,7 @@ if os.path.exists(model_path):
 else:
     print(f"Model file '{model_path}' does not exist.")
 
+features = {}
 # Function to make predictions
 def predict_ecological_group(input_data):
     try:
