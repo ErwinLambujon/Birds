@@ -29,7 +29,7 @@ def predict_ecological_group(input_data):
         return None
 
 # Example usage:
-input_features = ...  # Your input features (e.g., a NumPy array or Pandas DataFrame)
+input_features = features
 predicted_group = predict_ecological_group(input_features)
 
 if predicted_group is not None:
