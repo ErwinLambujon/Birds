@@ -39,6 +39,9 @@ else:
 
 
 # Streamlit app
+# Initialize an empty dictionary for features
+features = {}
+
 def main():
     st.title('Bird Ecological Group Predictor')
     
@@ -55,20 +58,22 @@ def main():
     tarl = st.number_input('Tarsus Length', min_value=0.0)
     tarw = st.number_input('Tarsus Width', min_value=0.0)
     
+    # Update the features dictionary
+    features.update({
+        'huml': huml,
+        'humw': humw,
+        'ulnal': ulnal,
+        'ulnaw': ulnaw,
+        'feml': feml,
+        'femw': femw,
+        'tibl': tibl,
+        'tibw': tibw,
+        'tarl': tarl,
+        'tarw': tarw
+    })
+    
     # Predict button
     if st.button('Predict'):
-        features = {
-            'huml': huml,
-            'humw': humw,
-            'ulnal': ulnal,
-            'ulnaw': ulnaw,
-            'feml': feml,
-            'femw': femw,
-            'tibl': tibl,
-            'tibw': tibw,
-            'tarl': tarl,
-            'tarw': tarw
-        }
         prediction = predict_ecological_group(features)
         
         # Output section
