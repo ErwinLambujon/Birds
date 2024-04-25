@@ -1,10 +1,9 @@
-import streamlit as st
-import pandas as pd
-import joblib
-
-# Load the trained model
 import os
-# Define the path to the model file
+import joblib
+import streamlit as st
+import numpy as np
+
+# Load the model
 model_path = 'birds_classification.pkl'
 
 # Check if the file exists
@@ -18,32 +17,23 @@ if os.path.exists(model_path):
 else:
     print(f"Model file '{model_path}' does not exist.")
 
-features = {}
 # Function to make predictions
 def predict_ecological_group(input_data):
     try:
-        prediction = model.predict(input_data)
-        return prediction
+        # Convert input features dictionary to a NumPy array
+        input_array = np.array(list(input_data.values())).reshape(1, -1)
+        prediction = model.predict(input_array)
+        return prediction[0]  # Return the first element of the prediction array
     except Exception as e:
         print(f"Error during prediction: {e}")
         return None
 
-# Example usage:
-input_features = features
-predicted_group = predict_ecological_group(input_features)
-
-if predicted_group is not None:
-    print(f"Predicted ecological group: {predicted_group}")
-else:
-    print("Prediction failed.")
-
-
 # Streamlit app
-# Initialize an empty dictionary for features
-features = {}
-
 def main():
     st.title('Bird Ecological Group Predictor')
+    
+    # Initialize an empty dictionary for features
+    features = {}
     
     # Input section
     st.header('Input Features')
@@ -78,7 +68,10 @@ def main():
         
         # Output section
         st.header('Prediction Result')
-        st.write(f'The predicted ecological group is: {prediction}')
+        if prediction is not None:
+            st.write(f'The predicted ecological group is: {prediction}')
+        else:
+            st.write("Prediction failed.")
 
 if __name__ == '__main__':
     main()
