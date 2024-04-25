@@ -4,8 +4,6 @@ import joblib
 
 # Load the trained model
 import os
-import joblib
-
 # Define the path to the model file
 model_path = 'birds_classification.pkl'
 
@@ -13,7 +11,7 @@ model_path = 'birds_classification.pkl'
 if os.path.exists(model_path):
     # Load the model
     try:
-        model = joblib.load('birds_classification.pkl')
+        model = joblib.load(model_path)
         print("Model loaded successfully.")
     except Exception as e:
         print(f"Error loading the model: {e}")
@@ -22,11 +20,23 @@ else:
 
 
 # Function to make predictions
-def predict_ecological_group(features):
-    # Assuming 'features' is a dictionary containing input values
-    input_data = pd.DataFrame([features])
-    prediction = model.predict(input_data)
-    return prediction[0]
+def predict_ecological_group(input_data):
+    try:
+        prediction = model.predict(input_data)
+        return prediction
+    except Exception as e:
+        print(f"Error during prediction: {e}")
+        return None
+
+# Example usage:
+input_features = ...  # Your input features (e.g., a NumPy array or Pandas DataFrame)
+predicted_group = predict_ecological_group(input_features)
+
+if predicted_group is not None:
+    print(f"Predicted ecological group: {predicted_group}")
+else:
+    print("Prediction failed.")
+
 
 # Streamlit app
 def main():
